@@ -17,6 +17,13 @@ import com.stambulo.weatherfragment.WeatherContainer;
 import java.util.Objects;
 
 public class WeatherFragment extends Fragment {
+    TextView textTest;
+    TextView city_tv;
+    TextView temperature_tv;
+    TextView humidity_tv;
+    TextView pressure_tv;
+    TextView wind_tv;
+
     public static WeatherFragment create(WeatherContainer container) {
         WeatherFragment fragment = new WeatherFragment();    // создание
 
@@ -27,8 +34,6 @@ public class WeatherFragment extends Fragment {
 
         return fragment;
     }
-
-    TextView textTest;
 
     // Получить индекс из списка (фактически из параметра)
     int getIndex() {
@@ -51,8 +56,25 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        outputData(view);
+    }
+
+    private void outputData(View view){
         textTest = view.findViewById(R.id.testText);
+        city_tv = view.findViewById(R.id.city);
+        temperature_tv = view.findViewById(R.id.temperature);
+        pressure_tv = view.findViewById(R.id.pressure);
+        humidity_tv = view.findViewById(R.id.humidity);
+        wind_tv = view.findViewById(R.id.wind);
 
         textTest.setText("" + getIndex());
+
+        WeatherContainer weatherContainer = (WeatherContainer) (Objects.requireNonNull(getArguments())
+                .getParcelable(Const.WEATHER_CONTAINER_KEY));
+        city_tv.setText(weatherContainer.getCityName());
+        temperature_tv.setText("" + weatherContainer.getTemperature());
+        pressure_tv.setText("" + weatherContainer.getPressure());
+        humidity_tv.setText("" + weatherContainer.getHumidity());
+        wind_tv.setText("" + weatherContainer.getWind());
     }
 }

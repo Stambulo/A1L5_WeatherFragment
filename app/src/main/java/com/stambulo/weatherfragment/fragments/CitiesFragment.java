@@ -21,6 +21,7 @@ import com.stambulo.weatherfragment.WeatherActivity;
 import com.stambulo.weatherfragment.WeatherContainer;
 
 import java.util.Objects;
+import java.util.Random;
 
 public class CitiesFragment extends Fragment {
     private ListView listView;
@@ -123,10 +124,15 @@ public class CitiesFragment extends Fragment {
 
     private WeatherContainer getWeatherContainer() {
         String[] cities = getResources().getStringArray(R.array.cities);
+        Random r = new Random();
 
         WeatherContainer container = new WeatherContainer();
         container.setPosition(currentPosition);
         container.setCityName(cities[currentPosition]);
+        container.setTemperature(r.nextInt(30) + 10);
+        container.setHumidity(r.nextInt(60) + 30);
+        container.setPressure(r.nextInt(200) + 560);
+        container.setWind(r.nextInt(15) + 3);
 
         return container;
     }
