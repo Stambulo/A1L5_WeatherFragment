@@ -56,18 +56,20 @@ public class WeatherFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        initViews(view);
         outputData(view);
     }
 
-    private void outputData(View view){
-        textTest = view.findViewById(R.id.testText);
+    private void initViews(View view){
         city_tv = view.findViewById(R.id.city);
         temperature_tv = view.findViewById(R.id.temperature);
         pressure_tv = view.findViewById(R.id.pressure);
         humidity_tv = view.findViewById(R.id.humidity);
         wind_tv = view.findViewById(R.id.wind);
+    }
 
-        textTest.setText("" + getIndex());
+    private void outputData(View view){
+        //textTest.setText("" + getIndex());
 
         WeatherContainer weatherContainer = (WeatherContainer) (Objects.requireNonNull(getArguments())
                 .getParcelable(Const.WEATHER_CONTAINER_KEY));

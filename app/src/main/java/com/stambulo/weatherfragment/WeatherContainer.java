@@ -11,34 +11,23 @@ public class WeatherContainer implements Parcelable {
     private int pressure;
     private int wind;
 
-    public int getPosition() {
-        return position;
-    }
-
-    public void setPosition(int position) {
-        this.position = position;
-    }
-
-    public String getCityName() {
-        return cityName;
-    }
-
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
-    }
-
-    public WeatherContainer() {
-    }
-
     protected WeatherContainer(Parcel in) {
         position = in.readInt();
         cityName = in.readString();
+        temperature = in.readInt();
+        humidity = in.readInt();
+        pressure = in.readInt();
+        wind = in.readInt();
     }
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeInt(position);
         dest.writeString(cityName);
+        dest.writeInt(temperature);
+        dest.writeInt(humidity);
+        dest.writeInt(pressure);
+        dest.writeInt(wind);
     }
 
     @Override
@@ -57,6 +46,25 @@ public class WeatherContainer implements Parcelable {
             return new WeatherContainer[size];
         }
     };
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public String getCityName() {
+        return cityName;
+    }
+
+    public void setCityName(String cityName) {
+        this.cityName = cityName;
+    }
+
+    public WeatherContainer() {
+    }
 
     public int getTemperature() {
         return temperature;

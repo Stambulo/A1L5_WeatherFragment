@@ -129,7 +129,7 @@ public class CitiesFragment extends Fragment {
         WeatherContainer container = new WeatherContainer();
         container.setPosition(currentPosition);
         container.setCityName(cities[currentPosition]);
-        container.setTemperature(r.nextInt(30) + 10);
+        container.setTemperature(r.nextInt(20) + 5);
         container.setHumidity(r.nextInt(60) + 30);
         container.setPressure(r.nextInt(200) + 560);
         container.setWind(r.nextInt(15) + 3);
